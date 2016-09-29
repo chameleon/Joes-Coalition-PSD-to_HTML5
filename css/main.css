@@ -1,0 +1,1132 @@
+/* ==========================================================================
+   READ ME
+   I keep the:
+   - root/html font size defined in 62.5% (not 10px- I want to respect users choice to resize browser font)
+   - body font size defined as 1.6rem (to reset page default to 16px) 
+   - modules heights defined with rem units and widths with % of parent
+   - and elements inside modules sized with em.  (at this level ems shouldnt'cause much nesting problems and things will scale within each module for 'better ux')
+   -This approach makes easier to manipulate global size, which scales the type in the modules, while the module content is scaled based on the module font size itself.
+   -This is a variation on a solution from Chris Coyier of CSS-Tricks (his uses 10px in the root). http://www.sitepoint.com/power-em-units-css/
+
+========================================================================== */
+/*
+Steps t convert PSD to PDF fast.
+auto slice psd
+get logo img into formats and pull colors
+Gather info:
+Color info into themeroller?  To download default theme?
+Site/Page name:
+max-width of content:  940px;
+header max-height: 138
+hero max-height: 344
+max num columns: 3
+column max-width: 320
+thmbnail max-w  284 plus border
+social icons max-w 50
+input 296
+button 164
+
+page bg #282828
+header bg dark 1d1d1d
+footer bg 333333
+
+delete html & css sections that you don't need.
+
+*/
+
+/*  this next comment will stay during minification becasue one or more !! added */
+/*!! HTML5 Boilerplate v5.3.0 | MIT License | https://html5boilerplate.com/ */
+
+
+/* ==========================================================================
+   FONTS - load before styles
+   ========================================================================== */
+/* Style icon font & snippets taken from much larger iconic.css */
+
+/* import a hosted font:   @import url(//fonts.googleapis.com/css?family=Open+Sans);  
+    or put in head:  <link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    to call:  font-family: 'Open Sans', sans-serif;
+*/
+
+
+@font-face {
+  font-family: 'MyWebFont';
+  src: url('webfont.eot'); /* IE9 Compat Modes */
+  src: url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('webfont.woff2') format('woff2'), /* Super Modern Browsers */
+       url('webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+/* Example Circus font:  sancreek-regular - latin */
+@font-face {
+    font-family: 'sancreekregular';
+    src: url('../fonts/sancreek/sancreek-regular-webfont.eot');
+    src: url('../fonts/sancreek/sancreek-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sancreek/sancreek-regular-webfont.woff2') format('woff2'),
+         url('../fonts/sancreek/sancreek-regular-webfont.woff') format('woff'),
+         url('../fonts/sancreek/sancreek-regular-webfont.ttf') format('truetype'),
+         url('../fonts/sancreek/sancreek-regular-webfont.svg#sancreekregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Material-Design-Iconic-Font';
+  src:  url('../fonts/Material-Design-Iconic-Font/Material-Design-Iconic-Font.woff2?v=2.1.0') format('woff2'), 
+        url('../fonts/Material-Design-Iconic-Font.woff?v=2.1.0') format('woff'), 
+        url('../fonts/Material-Design-Iconic-Font.ttf?v=2.1.0') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+/* These zmdi OVERRIDES names are from the material design font stylesheet */
+.zmdi {
+  display: inline-block;
+  font: normal normal normal 14px/1 'Material-Design-Iconic-Font';
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: antialiased;
+}
+
+.zmdi-linkedin-box:before {
+  content: '\f356';
+}
+
+.zmdi-github-box:before {
+  content: '\f344';
+}
+
+.zmdi-twitter-box:before {
+  content: '\f35f';
+}
+
+.zmdi-stack-overflow:before {
+  content: '\f35c';
+}
+/* END iconic font styles taken from material-design-iconic-font.css */
+
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+    /*
+    color: #222;
+    font-size: 1em;
+    */
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    overflow-y: scroll; /*content can jump side to side. By forcing a scrollbar no matter the height of our content, we stop this small, but annoying issue.*/
+}
+// Prevent text size change on orientation change.
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+
+    /* //responsive alternative for vertical centering:
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    */
+}
+
+
+/*IE7 image resizing improvement*/
+/* bicubic resizing for non-native sized IMG: code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
+.ie7 img { -ms-interpolation-mode: bicubic; }
+
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* screenreaders tabbing through links, and mouse users */
+a:hover, a:active { outline: none; }
+a, a:active, a:visited { color:#607890; }
+a:hover { color:#036; }
+
+/* Reward button interaction with various hover states:*/
+.btn {
+  background-color: #0087F7;
+}
+.btn:hover {
+  background-color: #006DDE;
+  transition: 0.3s ease all;
+}
+.btn:focus {
+  background-color: #0053C4;
+  transition: 0.3s ease all;
+}
+.btn:active {
+  background-color: #0039AA;
+  transition: 0.3s ease all;
+}
+/* And, On devices that allow this to be overridden, there is a highlight color that appears when you tap the element. Many choose to hide it entirely with a transparent highlight: */
+.btn {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+/* Also consider this not-well-supported option, where drag or long-touch detection is not needed: https://ftlabs.github.io/fastclick/*/ 
+.btn {
+    touch-action: none;
+}
+
+/* To fix svg graphics overflow bug in IE 9: */
+svg:not(:root) { overflow: hidden; }
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   FORMS default styles
+   ========================================================================== */
+
+/* align checkboxes, radios, text inputs with their label */
+input[type="radio"] { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: bottom; *vertical-align: baseline; }
+.ie6 input { vertical-align: text-bottom; }
+
+/* hand cursor on clickable input elements */
+label, input[type=button], input[type=submit], button { cursor: pointer; }
+
+
+/* FORM - complete example*/
+
+
+body {
+    /*margin: 2em 5em;*//* what was this??? */
+    font-family:Georgia, "Times New Roman", Times, serif;
+}
+h1, legend {
+    font-family:Arial, Helvetica, sans-serif;
+}
+label, input, select {
+    display:block;
+}
+input, select {
+    margin-bottom: 1em;
+}
+fieldset {
+    margin-bottom: 2em;
+    padding: 1em;
+}
+fieldset fieldset {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+input[type="checkbox"] {
+    display:inline;
+}
+.range {
+    margin-bottom:1em;
+}   
+.card-type input, .card-type label {
+    display:inline-block;
+}
+/* Reward valid inputs */
+form {
+
+    > input[type="text"],
+    > input[type="email"],
+    > input[type="password"] {
+      
+      /* show success! */
+      &:valid {
+        /*background: url(images/check.svg);*/
+        border: 2px solid green;
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: 20px 20px;
+
+        /* continue to hide the label */
+        & + label {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+/* soften the bounce back and forth from valid to invalid on email */
+[type="email"]:invalid ~ .requirements {
+    transition-delay: 1s;
+  }
+  
+/*  \\\ END form -complete example  */
+
+
+/* ==========================================================================
+   Custom styles (in the B.E.M. convention)
+    No IDs in CSS. IDs are still very useful for JavaScript hooks and HTML anchors, but not in CSS.
+    Repetitions of the same rule, like @media (max-width: 850px), will be serialized and interpreted as one.
+       media queries related to areas and margins go in the template block, and additional media queries related to 
+       the components themselves, go in the components blocks. Since the template is responsible for sizes
+    inline media queries get serialized by the browser. @media only screen and (min-width: 640px;) {}
+   ========================================================================== */
+.root{
+    font-size: 62.5%;
+}
+.html{
+    font-size: 62.5%; /* rems are relative to this.  In the body tag, universal font-size is reset back to 100% via 1.6 rem. */
+    
+    /* 
+    em based media-query breakpoints - then layouts will respond to different 
+    font sizing too.  https://zellwk.com/blog/media-query-units/
+    em used for component spacing
+    em used for elements?  h1, h2 ?
+    rem used for vertical spacing
+    */
+}
+
+.body{
+    /* set default page font to 16px.  
+    em font sizes later reference this but careful of nesting.
+    rem box vertical margins/padding reference html tage 62.5%
+    */
+    font-size: 1.6rem;
+    background-color: #ffffff;
+    margin: 0;
+    /* font stack */
+    /* Trebuchet-based sans serif stack - Helvetica or Roboto, Tebuche, etc.  */
+    font-family: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+}
+
+/* good for Helvetica type fonts - increases spacing */
+h1, h2, h3 {letter-spacing: .75px;}
+
+.page-container{
+    /* try not to use a page container for layout (maaaybe to center). ok for styling*/
+    max-width: 800px;
+    margin: 0 auto
+}
+
+/*  HEADER  */
+.header-wrapper{
+
+}
+.header{
+
+}
+
+.logo{
+    
+
+}
+.logo .image-res-simple{
+    width: 40vw;
+
+}
+.logo .image-res-better{
+    width: 40vw;
+
+}
+
+.header__title{
+
+}
+
+.header__title--arrow{
+
+}
+
+.nav{
+    
+}
+
+/* FLEX NAV */
+.main-nav {
+  background: #eee;
+}
+.main-nav  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+  }
+.main-nav  a {
+    padding: 1.25rem 0.5rem;
+    font-size: 1.6rem;
+    max-width: 140px;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: flex-start;
+    color: #333;
+}
+
+.main-nav  a:hover, .main-nav  a:focus {
+      background: #ccc;
+      color: black;
+
+}
+.main-nav  span {
+    display: block;
+    font-size: 1rem;
+    font-weight: normal;
+    color: #888;
+    margin: 0.25rem 0 0 0;
+  }
+.main-nav .icon {
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin-right: 1rem;
+    fill: #999;
+  }
+.main-nav.outlines *{
+    
+      outline: 1px solid rgba(red, 0.5); 
+}
+/*  \\\\ END FLEX NAV   */
+
+/* ==========================================================================
+   BOOTSTRAP navbar
+   ========================================================================== */
+
+.containerMenuOverride{
+    padding-right: 0;
+    padding-left: 0;
+}
+.navbar{
+    margin-bottom: 0;
+}
+.navbar img{
+    position: relative;
+    bottom: -7px;
+}
+.row{
+    margin-left: 0;
+    margin-right: 0;
+}
+.menu-main-nav-container{
+  font-size: 1.8rem;
+}
+
+/* \\\\ END BOOTSTRAP navbar */
+
+
+.hero-wrapper{
+
+}
+.hero{
+
+}
+
+
+/* CONTENT */
+.content-wrapper{
+
+}
+.content{
+
+}
+
+/* css columns */
+.grid-container{
+
+}
+/* grid columns */
+.columns-container{
+
+}
+/* slider */
+.slider-wrapper{
+
+}
+.slider{
+
+}
+
+/* FOOTER  */
+.footer-wrapper{
+
+}
+.footer{
+
+}
+#footer {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:120px;
+   width:100%;
+   background:#999;
+}
+.footer__title{
+
+}
+.footer__title:hover{
+
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+/*  FLEX BOX  */
+.flex-box-example{
+    justify-content: center;
+    align-items: flex-end;
+        align-self:; /* for individual items, not wrapper  */
+    flex-direction: row-reverse;
+        order: 1   -1  etc   default is 0;/* for individual items, not wrapper  */
+    flex-wrap: wrap;
+    
+}
+
+
+/*  Orientation lock  */
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+  html {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+}
+
+/*
+ * Hide visually and from screen readers
+ */
+.hidden {
+    display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+    .visuallyhidden {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+    .visuallyhidden.focusable:active,
+    .visuallyhidden.focusable:focus {
+        clip: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        position: static;
+        width: auto;
+    }
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*  The Easy Clearing Method 
+ * Clearfix: contain floats
+ * The `clearfix` class can be added to any element to ensure that it always fully contains its floated children.
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+   content: "."; 
+   visibility: hidden; 
+   display: block; 
+   height: 0; 
+   clear: both;
+
+}
+/* This will apply a small bit of content, hidden from view, after the parent element which clears the float. */
+
+/* The Overflow Method - if yu must:  https://css-tricks.com/all-about-floats/  */
+
+
+/*  CLEAR:BOTH;  Method
+The Empty Div Method is, quite literally, an empty div. 
+<div style="clear: both;"></div>
+*/
+
+/* ==========================================================================
+   MY helper classes - in adition to HTML5 Boilerplate's
+   ========================================================================== */
+/* Use this value to disable all of the default behaviors and allow 
+your content to handle all touch input (touches that begin on
+ the element .btn must not trigger default touch behaviors).
+ Mobile safari and android, IE  Other properties also available: https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action#Browser_compatibility 
+  https://webkit.org/blog/5610/more-responsive-tapping-on-ios/
+ */
+//.btn{touch-action: none;}
+
+.rounded{
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; /* future proofing */
+    -khtml-border-radius: 10px; /* for old Konqueror browsers */
+}
+
+/*  Scale on hover  */
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.1); }
+
+
+/* Responsive image  */
+.responsive-image{
+    max-width:100%;  /*(to fill container...but you can’t add a height tag for this to work)
+    to center an image with margin:0 auto; need to set display:block;*/
+    display:block;
+    margin:0 auto;
+}
+/*  Responsive video */
+.responsive-video {
+    max-width:100%;
+}
+
+.center-background-img {
+    background:url(logo.png) center center no-repeat;
+}
+.center-img {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   //width: 500px;
+   //height: 500px;
+   margin-top: -250px; /* Half the height */
+   margin-left: -250px; /* Half the width */
+}
+
+/* responsive- vertically-centered  */
+.vertically-centered {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/*
+Flex VERTICAL CENTER it:
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.inner {
+  align-self: center;
+}
+*/
+
+/* Self-heighting div based on bg image aspect ratio */
+/*
+.wrapper {
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  background-size: contain;
+  background: url('https://upload.wikimedia.org/wikipedia/en/thumb/6/67/Wiki-llama.jpg/1600px-Wiki-llama.jpg') top center no-repeat;
+  margin: 0 auto;
+}
+.wrapper:after {
+  padding-top: 51.5%;
+  display: block;
+  content: '';
+}
+
+.main {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  color: black;
+  text-align: center;
+  margin-top: 5%;
+}
+
+HTML:
+<div class="wrapper">
+  <div class="main">
+    This is where your overlay content goes, titles, text, buttons, etc.
+  </div>
+</div>
+*/
+
+/* Browser specific (not valid) styles to make preformatted text (code) wrap */        
+pre {
+     white-space: pre-wrap;       /* css-3 */
+     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+     white-space: -pre-wrap;      /* Opera 4-6 */
+     white-space: -o-pre-wrap;    /* Opera 7 */
+     word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+.three-col {
+   -moz-column-count: 3;
+   -moz-column-gap: 20px;
+   -webkit-column-count: 3;
+   -webkit-column-gap : 20px;
+   -moz-column-rule-color:  #ccc;
+   -moz-column-rule-style:  solid;
+   -moz-column-rule-width:  1px;
+   -webkit-column-rule-color:  #ccc;
+   -webkit-column-rule-style: solid ;
+   -webkit-column-rule-width:  1px;
+        width: 100%;
+        border: 1px solid darkgreen;
+}
+
+/* Remove dotted outline on links but not if tabbed through. */
+a:active {
+    outline: none;
+}
+/* Remove Gray Highlight When Tapping Links in Mobile Safari */
+-webkit-tap-highlight-color: rgba(0,0,0,0);
+
+/* FORM helpers */
+
+// Remove tap highlight on iOS
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+
+/* ==========================================================================
+   MOMENTUM SCROLLING
+   ========================================================================== */
+  * {overflow-y: scroll; /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;}
+/* ==========================================================================
+   SCROLL SNAPPING POINTS - New!!  Cool! jQuery scrollnap detector included.
+   https://www.sitepoint.com/intuitive-scrolling-interfaces-with-css-scroll-snap-points/
+   Just give the container and scroll-sections their classes.
+/*SCROLL SNAP SYLES*/
+
+.scroll-container {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  width: 100%;
+  height: 400px;
+  scroll-snap-type: mandatory;
+  scroll-behavior: smooth;
+  background: #eee;
+  border: solid 1px #ccc;
+  font-size: 0px;
+  margin-bottom: 50px;
+}
+
+.scroll-container .scroll-section {
+  display: inline-block;
+  vertical-align: middle;
+  background: #fff;
+  border: solid 1px #ccc;
+  white-space: nowrap;
+}
+/*Slider X (different sized images)*/
+
+.scroll-container.diff-size {
+  scroll-snap-destination: 50% 0%;
+  padding: 20px 0px;
+}
+
+.scroll-container.diff-size .scroll-section {
+  width: auto;
+  height: 100%;
+  margin-right: 15px;
+  scroll-snap-coordinate: 50% 0%;
+}
+
+.scroll-container.diff-size .scroll-section:first-child {
+  scroll-snap-coordinate: 0% 0%, 50% 0%;
+  margin-left: 15px;
+}
+
+.scroll-container.diff-size .scroll-section:last-child {
+  scroll-snap-coordinate: 50% 0%, 100% 0%;
+}
+
+/* ==========================================================================
+   SPINNER (css)  Edit or see others at: http://cssload.net/
+   ========================================================================== */
+
+#fountainTextG{
+    width:600px;
+    margin:auto;
+}
+
+.fountainTextG{
+    color:rgb(0,0,0);
+    font-family:Arial;
+    font-size:63px;
+    text-decoration:none;
+    font-weight:normal;
+    font-style:normal;
+    float:left;
+    animation-name:bounce_fountainTextG;
+        -o-animation-name:bounce_fountainTextG;
+        -ms-animation-name:bounce_fountainTextG;
+        -webkit-animation-name:bounce_fountainTextG;
+        -moz-animation-name:bounce_fountainTextG;
+    animation-duration:2.09s;
+        -o-animation-duration:2.09s;
+        -ms-animation-duration:2.09s;
+        -webkit-animation-duration:2.09s;
+        -moz-animation-duration:2.09s;
+    animation-iteration-count:infinite;
+        -o-animation-iteration-count:infinite;
+        -ms-animation-iteration-count:infinite;
+        -webkit-animation-iteration-count:infinite;
+        -moz-animation-iteration-count:infinite;
+    animation-direction:normal;
+        -o-animation-direction:normal;
+        -ms-animation-direction:normal;
+        -webkit-animation-direction:normal;
+        -moz-animation-direction:normal;
+    transform:scale(.5);
+        -o-transform:scale(.5);
+        -ms-transform:scale(.5);
+        -webkit-transform:scale(.5);
+        -moz-transform:scale(.5);
+}#fountainTextG_1{
+    animation-delay:0.75s;
+        -o-animation-delay:0.75s;
+        -ms-animation-delay:0.75s;
+        -webkit-animation-delay:0.75s;
+        -moz-animation-delay:0.75s;
+}
+#fountainTextG_2{
+    animation-delay:0.9s;
+        -o-animation-delay:0.9s;
+        -ms-animation-delay:0.9s;
+        -webkit-animation-delay:0.9s;
+        -moz-animation-delay:0.9s;
+}
+#fountainTextG_3{
+    animation-delay:1.05s;
+        -o-animation-delay:1.05s;
+        -ms-animation-delay:1.05s;
+        -webkit-animation-delay:1.05s;
+        -moz-animation-delay:1.05s;
+}
+#fountainTextG_4{
+    animation-delay:1.2s;
+        -o-animation-delay:1.2s;
+        -ms-animation-delay:1.2s;
+        -webkit-animation-delay:1.2s;
+        -moz-animation-delay:1.2s;
+}
+#fountainTextG_5{
+    animation-delay:1.35s;
+        -o-animation-delay:1.35s;
+        -ms-animation-delay:1.35s;
+        -webkit-animation-delay:1.35s;
+        -moz-animation-delay:1.35s;
+}
+#fountainTextG_6{
+    animation-delay:1.5s;
+        -o-animation-delay:1.5s;
+        -ms-animation-delay:1.5s;
+        -webkit-animation-delay:1.5s;
+        -moz-animation-delay:1.5s;
+}
+#fountainTextG_7{
+    animation-delay:1.64s;
+        -o-animation-delay:1.64s;
+        -ms-animation-delay:1.64s;
+        -webkit-animation-delay:1.64s;
+        -moz-animation-delay:1.64s;
+}
+
+
+
+
+@keyframes bounce_fountainTextG{
+    0%{
+        transform:scale(1);
+        color:rgb(0,0,0);
+    }
+
+    100%{
+        transform:scale(.5);
+        color:rgb(255,255,255);
+    }
+}
+
+@-o-keyframes bounce_fountainTextG{
+    0%{
+        -o-transform:scale(1);
+        color:rgb(0,0,0);
+    }
+
+    100%{
+        -o-transform:scale(.5);
+        color:rgb(255,255,255);
+    }
+}
+
+@-ms-keyframes bounce_fountainTextG{
+    0%{
+        -ms-transform:scale(1);
+        color:rgb(0,0,0);
+    }
+
+    100%{
+        -ms-transform:scale(.5);
+        color:rgb(255,255,255);
+    }
+}
+
+@-webkit-keyframes bounce_fountainTextG{
+    0%{
+        -webkit-transform:scale(1);
+        color:rgb(0,0,0);
+    }
+
+    100%{
+        -webkit-transform:scale(.5);
+        color:rgb(255,255,255);
+    }
+}
+
+@-moz-keyframes bounce_fountainTextG{
+    0%{
+        -moz-transform:scale(1);
+        color:rgb(0,0,0);
+    }
+
+    100%{
+        -moz-transform:scale(.5);
+        color:rgb(255,255,255);
+    }
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+/* width 560px and up ( 560 desired breakpoint / 16 root font size = 35em) */
+@media only screen and (min-width: 35em) {
+
+
+}
+
+@media print,
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 1.25dppx),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* CSS- Tricks solution for supporting hi-Res images
+but only for screens that can make use of them.  BUT...
+strongly recommend looking into HTLM’s new ‘picture’ tag, 
+and the srcset and sizes properties now available on regular img tags.
+ */
+ @media 
+(-webkit-min-device-pixel-ratio: 2), 
+(min-resolution: 192dpi) { 
+    /* Retina-specific stuff here */
+}
+
+/* Or other highish-res: */
+/* 1.25 dpr */
+@media 
+(-webkit-min-device-pixel-ratio: 1.25), 
+(min-resolution: 120dpi){ 
+    /* Retina-specific stuff here */
+}
+
+/* 1.3 dpr */
+@media 
+(-webkit-min-device-pixel-ratio: 1.3), 
+(min-resolution: 124.8dpi){ 
+    /* Retina-specific stuff here */
+}
+
+/* 1.5 dpr */
+@media 
+(-webkit-min-device-pixel-ratio: 1.5), 
+(min-resolution: 144dpi){ 
+    /* Retina-specific stuff here */
+}
+
+
+
+/* ==========================================================================
+   Print styles...should always be included last, so that the other styles can be overwritten.!!
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after,
+    *:first-letter,
+    *:first-line {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster:
+                                   http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+        /* color: #444 !important; */
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    /* Ensures that no images reach the outer bounds of the normal page view. */
+    img {
+        max-width: 100% !important;
+    }
+
+    /* Content "windows" are really ugly, both on the screen and on paper. This bit of CSS magic prevents widows and orphans on heading and paragraph tags */
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

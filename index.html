@@ -1,0 +1,590 @@
+<!doctype html>
+<html class="no-js" lang="en"><!-- no-js is removed by modernizer for new browsers -->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><!-- user-scalable=no might cause Accessibility problems -->
+        <title>My HTML5-CSS template.</title>
+        <meta name="description" content="A modern html5 mobile-first website.">
+
+
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="shortcut icon" href="favicon.ico" />
+
+        <!-- Style mobile browser elements -->
+        <!-- Android Chrome, Firefox OS and Opera -->
+        <meta name="theme-color" content="#4285f4">
+        <!-- Windows Phone -->
+        <meta name="msapplication-navbutton-color" content="#4285f4">
+        <!-- iOS Safari -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><!-- black or black-translucent. With black-translucent, the status bar floats on top of the full screen content, rather than pushing it down. This gives the layout more height, but obstructs the top. -->
+
+
+        <!-- Allow iOS8 web app to be run in full-screen mode. -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <!-- Make the iOS8 app title different than the page title. -->
+        <meta name="apple-mobile-web-app-title" content="iOS 8 web app">
+        <!-- Disable automatic phone number detection. -->
+        <meta name="format-detection" content="telephone=no">
+
+
+        <!-- ICONS -->
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <!-- iPad retina icon -->
+        <link href="https://placehold.it/152"
+              sizes="152x152"
+              rel="apple-touch-icon-precomposed">
+
+        <!-- iPad retina icon (iOS < 7) -->
+        <link href="https://placehold.it/144"
+              sizes="144x144"
+              rel="apple-touch-icon-precomposed">
+
+        <!-- iPad non-retina icon -->
+        <link href="https://placehold.it/76"
+              sizes="76x76"
+              rel="apple-touch-icon-precomposed">
+
+        <!-- iPad non-retina icon (iOS < 7) -->
+        <link href="https://placehold.it/72"
+              sizes="72x72"
+              rel="apple-touch-icon-precomposed">
+
+        <!-- iPhone 6 Plus icon -->
+        <link href="https://placehold.it/180"
+              sizes="120x120"
+              rel="apple-touch-icon-precomposed">
+
+        <!-- iPhone retina icon (iOS < 7) -->
+        <link href="https://placehold.it/114"
+              sizes="114x114"
+              rel="apple-touch-icon-precomposed">
+
+        <!-- iPhone non-retina icon (iOS < 7) -->
+        <link href="https://placehold.it/57"
+              sizes="57x57"
+              rel="apple-touch-icon-precomposed">
+
+        <!-- STARTUP IMAGES -->
+
+        <!-- iPad retina portrait startup image -->
+        <link href="https://placehold.it/1536x2008"
+              media="(device-width: 768px) and (device-height: 1024px)
+                     and (-webkit-device-pixel-ratio: 2)
+                     and (orientation: portrait)"
+              rel="apple-touch-startup-image">
+
+        <!-- iPad retina landscape startup image -->
+        <link href="https://placehold.it/1496x2048"
+              media="(device-width: 768px) and (device-height: 1024px)
+                     and (-webkit-device-pixel-ratio: 2)
+                     and (orientation: landscape)"
+              rel="apple-touch-startup-image">
+
+        <!-- iPad non-retina portrait startup image -->
+        <link href="https://placehold.it/768x1004"
+              media="(device-width: 768px) and (device-height: 1024px)
+                     and (-webkit-device-pixel-ratio: 1)
+                     and (orientation: portrait)"
+              rel="apple-touch-startup-image">
+
+        <!-- iPad non-retina landscape startup image -->
+        <link href="https://placehold.it/748x1024"
+              media="(device-width: 768px) and (device-height: 1024px)
+                     and (-webkit-device-pixel-ratio: 1)
+                     and (orientation: landscape)"
+              rel="apple-touch-startup-image">
+
+        <!-- iPhone 6 Plus portrait startup image -->
+        <link href="https://placehold.it/1242x2148"
+              media="(device-width: 414px) and (device-height: 736px)
+                     and (-webkit-device-pixel-ratio: 3)
+                     and (orientation: portrait)"
+              rel="apple-touch-startup-image">
+
+        <!-- iPhone 6 Plus landscape startup image -->
+        <link href="https://placehold.it/1182x2208"
+              media="(device-width: 414px) and (device-height: 736px)
+                     and (-webkit-device-pixel-ratio: 3)
+                     and (orientation: landscape)"
+              rel="apple-touch-startup-image">
+
+        <!-- iPhone 6 startup image -->
+        <link href="https://placehold.it/750x1294"
+              media="(device-width: 375px) and (device-height: 667px)
+                     and (-webkit-device-pixel-ratio: 2)"
+              rel="apple-touch-startup-image">
+
+        <!-- iPhone 5 startup image -->
+        <link href="https://placehold.it/640x1096"
+              media="(device-width: 320px) and (device-height: 568px)
+                     and (-webkit-device-pixel-ratio: 2)"
+              rel="apple-touch-startup-image">
+
+        <!-- iPhone < 5 retina startup image -->
+        <link href="https://placehold.it/640x920"
+              media="(device-width: 320px) and (device-height: 480px)
+                     and (-webkit-device-pixel-ratio: 2)"
+              rel="apple-touch-startup-image">
+
+        <!-- iPhone < 5 non-retina startup image -->
+        <link href="https://placehold.it/320x460"
+              media="(device-width: 320px) and (device-height: 480px)
+                     and (-webkit-device-pixel-ratio: 1)"
+              rel="apple-touch-startup-image">
+
+<!-- CSS  -->
+        <!-- NORMALIZE.CSS  -->
+        <link rel="stylesheet" src="https://necolas.github.io/normalize.css/latest/normalize.css" />
+        <!--<link rel="stylesheet" href="css/normalize-4.1.1.css">-->
+        
+        <!-- BOOTSTRAP CSS - Latest compiled and minified CSS -->
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+        <!--<link rel="stylesheet" href="css/bootstrap-3.3.7.css">-->    
+
+        <!-- BOOTSTRAP THEME CSS - Optional theme -->
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> 
+        <!--<link rel="stylesheet" href="css/bootstrap-theme-3.3.7.css">-->
+
+        <!-- My own site-specific CSS - include LAST  -->
+        <link rel="stylesheet" href="css/main.css">
+
+        <!-- PICTUREFILL http://scottjehl.github.io/picturefill/  -->
+        <script>
+        // Picture element HTML5 shiv- PROBAbly don't need if usin ghtml5shiv or require.js
+        document.createElement( "picture" );
+        </script>
+        <script src="js/vendor/picturefill-3.0.2.js" async></script>
+
+        <!-- MODERNIZR 2.8.3 is the last dowloadable version of Modernizr before going to a build-only system. Tries CDN first:    -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+        <script>try{Modernizr} catch(e) {document.write('<script src="js/vendor/modernizr-2.8.3.min.js"><\/script>')}</script>
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <!--  SPINNER (css)- Edit or see others at: http://cssload.net/  -->
+        <div id="fountainTextG">
+            <div id="fountainTextG_1" class="fountainTextG">L</div>
+            <div id="fountainTextG_2" class="fountainTextG">o</div>
+            <div id="fountainTextG_3" class="fountainTextG">a</div>
+            <div id="fountainTextG_4" class="fountainTextG">d</div>
+            <div id="fountainTextG_5" class="fountainTextG">i</div>
+            <div id="fountainTextG_6" class="fountainTextG">n</div>
+            <div id="fountainTextG_7" class="fountainTextG">g</div>
+        </div>
+        <!--  \\\ END Spinner  -->
+
+
+
+<hr style="width: 100vw; ">
+        <div class="page-container">
+
+            <div class="header-wrapper">
+                <header class="header">
+                    <div class="logo">          
+                    
+                    
+                    <!-- How to use Picture tag with via picturefill.js 
+                    https://www.sitepoint.com/how-to-build-responsive-images-with-srcset/
+
+                        
+
+                        works on IE9 and prevents 'wrong picture' on Safari.
+                        May not load the image on Android 2.3.
+                        iPhone 4S retina: 640x960 pixel screen (326 pixels per inch... 320 x 480 CSS pixels- device-pixel-ratio: 2)
+                        HINTS: if just changing resolutions, use srcset and let the browser figure out whic img will work best ,like so:
+                        
+                        SRCSET ONLY with screen-width params
+                        <img src="small.jpg" srcset="medium.jpg 1000w, large.jpg 2000w" alt="yah">
+
+                        SRCSET ONLY with resolution params - X descriptors
+                        <img srcset="examples/images/image-384.jpg 1x, examples/images/image-768.jpg 2x" alt="…">
+                        
+                        SRCSET and SIZES -  Awesome breakpoint and image generator:
+                        http://www.responsivebreakpoints.com/   !!!!!!
+                        SIZES helps the browser figure out how many pixels the image will take up on the screen.  With that info IT decides which image to grab from the list in IMGSRC based on those RESOLUTION W numbers.
+                        (used together the browser does math...80% of this vw is 460, so I'll use the 480w)
+                        W descriptors take into account screen resolution.
+                        The sizes attribute is required any time you use srcset W width descriptors.
+                        <img
+                          sizes="(min-width: 40em) 80vw, 100vw"
+                           src="small.png" 
+                          srcset="examples/images/medium.jpg 375w,
+                                  examples/images/large.jpg 480w,
+                                  examples/images/extralarge.jpg 768w"
+                          alt="…">
+                        
+                        Maybe add this for small screen to save bandwidth (so you'd need a total of 3 versions of each image: 
+                        -phone (small size and mediu res
+                        -medium (large size lo-res for tablets/laptops/low-res desktops) and hi-res.)
+                        -large (same large size but hi-res 2x)
+
+                        All uses in order of complexity: 
+                        1) I want to serve high-res assets only to users with high pixel density viewports  IMG element
+                        2) I want the browser to choose the best image source for a user’s pixel density and the size of the image in the layout.  (Best common use I think- covers size and res...)  IMG Element
+                        3) I need my image sources to change only at specific breakpoints that I define.  IMG element
+                        4) I need specific image breakpoints, with multiple resolution options for each.   PICTURE element
+                        5) I want to serve newer image formats only to browsers that support them.  PICTURE element      
+                     -->
+                     <img  class="image-res-simple"
+                         src="small.jpg" 
+                         srcset="img/medium.jpg 1000w, img/large.jpg 2000w" 
+                         alt="yah">
+
+                     <!-- or  -->
+                        
+                        <img class="image-res-better" 
+                          sizes="(min-width: 40em) 80vw, 100vw"
+                          srcset="img/medium.jpg 375w,
+                                  img/large.jpg 480w,
+                                  img/extralarge.jpg 768w"
+                          alt="…">
+                    </div><!--\\\\ END logo div  -->
+<!-- FLEX NAV -->
+                    <nav role='navigation' class="main-nav" id="main-nav">
+                      <ul id="main-nav-list">
+                        <li>
+                          <a href="#">
+                            <svg viewBox="0 0 100 100" class="icon">
+                              <use xlink:href="#leaf">
+                            </svg>
+                            <div>
+                              Home
+                              <span>is where the heart is</span>
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                            <svg viewBox="0 0 100 100" class="icon">
+                              <use xlink:href="#maple-leaf">
+                            </svg>
+                            <div>
+                              About
+                              <span>to blow this popcicle stand</span>
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                            <svg viewBox="0 0 100 100" class="icon">
+                              <use xlink:href="#clover">
+                            </svg>
+                            <div>
+                              Clients
+                              <span>are beautiful people</span>
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                            <svg viewBox="0 0 100 100" class="icon">
+                              <use xlink:href="#tomato">
+                            </svg>
+                            <div>
+                              Contact
+                              <span>your mom she misses you</span>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                      
+                    </nav>
+<!-- \\\ END FLEX NAV  -->
+<!-- start BOOTSTRAP navbar  -->
+                    <div class='container containerMenuOverride'>
+                        <div class='row'>
+                            <div class='col-xs-12'>
+
+                                <nav class="navbar navbar-default">
+                                  <div class="container-fluid">
+                                    <!-- Brand and toggle get grouped for better mobile display -->
+                                    <div class="navbar-header">
+                                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                      </button>
+                                      <a class="navbar-brand" href="#">Brand</a>
+                                    </div>
+
+                                    <!-- Collect the nav links, forms, and other content for toggling -->
+                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                      <ul class="nav navbar-nav">
+                                        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                                        <li><a href="#">Link</a></li>
+                                        <li class="dropdown">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="#">Action</a></li>
+                                            <li><a href="#">Another action</a></li>
+                                            <li><a href="#">Something else here</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Separated link</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">One more separated link</a></li>
+                                          </ul>
+                                        </li>
+                                      </ul>
+                                      <!-- <form class="navbar-form navbar-left">
+                                        <div class="form-group">
+                                          <input type="text" class="form-control" placeholder="Search">
+                                        </div>
+                                        <button type="submit" class="btn btn-default">Submit</button>
+                                      </form> -->
+                                      <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="#">Link</a></li>
+                                        <li class="dropdown">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="#">Action</a></li>
+                                            <li><a href="#">Another action</a></li>
+                                            <li><a href="#">Something else here</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Separated link</a></li>
+                                          </ul>
+                                        </li>
+                                      </ul>
+                                    </div><!-- /.navbar-collapse -->
+                                  </div><!-- /.container-fluid -->
+                                </nav>
+                                
+
+                            </div>
+                        </div>
+                    </div>
+<!-- \\\ END BOOTSTRAP navbar  -->
+
+                </header>
+            </div>
+
+            <!-- HERO  -->
+            <div class="hero-wrapper">
+                <div class="hero">
+                </div>
+            </div>
+
+            <!-- SLIDER -->
+            <div class="slider-wrapper">
+                <div class="slider">
+                </div>
+            </div>
+
+            <!-- CONTENT -->
+            <main> 
+            <div class="content-wrapper">
+                <div class="content">
+                    
+                    <article>
+                            <time></time>
+                            <address></address>
+                            <header></header>
+                            <hgroup>
+                                 <h1>Main Headline</h1>
+                                 <h2>Article tagline or subheading</h2>
+                            </hgroup>
+                            <video></video>
+                            <img>
+                            <section>
+                                <p class="three-col">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+                            </section>
+                            <footer></footer>
+                            <figure></figure>
+                            <figcaption></figcaption>
+
+
+                            <section>Comments and <mark>more</mark> coments</section>
+                    </article>
+                </div>
+            </div>
+            </main>
+            <aside>Did You Know?</aside>
+
+ <!--  FORM - complete example- https://html5doctor.com/demos/forms/forms-example.html -->                           
+            <form id="register">
+                <h1>Register for Miss Bakers Space Cadets</h1>
+                  <fieldset> 
+                    <legend>Personal details</legend> 
+                    <div> 
+                        <label>First Name
+                        <input name="given-name" type="text" placeholder="First name only" required autofocus> 
+                        </label>
+                    </div>
+                    <div> 
+                        <label>Last Name
+                        <input name="family-name" type="text" placeholder="Last name only" required autofocus> 
+                        </label>
+                    </div>
+                    <div> 
+                        <label>Date of Birth
+                        <input name="dob" type="date" required>
+                        </label>
+                    </div> 
+                    <div> 
+                        <label>Email 
+                        <input name="email" type="email" placeholder="example@domain.com" required>
+                        </label> 
+                    </div> 
+                    <div> 
+                        <label>URL 
+                        <input name="url" type="url" placeholder="http://mysite.com">
+                        </label> 
+                    </div>    
+                    <div> 
+                        <label>Telephone 
+                        <input name="phone" type="tel" placeholder="Eg. +447000 000000" required>
+                        </label> 
+                    </div> 
+                    <div>
+                        <label>Shoesize
+                        <input name="shoes" type="number" min="5" max="18" step="0.5" value="9">
+                        </label>
+                    </div>
+                    <div>
+                        <label>Flying Skill level (1 low - 100 high)
+                        <input name="skill" type="range" min="1" max="100" value="0">
+                        <output name="output" onforminput="value=a.value">0</output>
+                        </label>
+                    </div>
+                  </fieldset>
+                  <fieldset> 
+                    <legend>Billing address</legend> 
+                    <div> 
+                        <label>Address 
+                        <textarea name="address" rows=5 required></textarea>
+                        </label> 
+                    </div> 
+                    <div> 
+                        <label>Post code 
+                        <input name="postCode" type="text" required>
+                        </label> 
+                    </div> 
+                    <div> 
+                        <label>Country 
+                        <input name="country" list="country-names" type="text" required> 
+                        <datalist id="country-names"> 
+                            <option label="England" value="England"></option> 
+                            <option label="Northern Ireland" value="Northern Ireland"></option> 
+                            <option label="Ireland" value="Ireland"></option> 
+                            <option label="Scotland" value="Scotland"></option> 
+                            <option label="Wales" value="Wales"></option> 
+                        </datalist>
+                        </label> 
+                    </div> 
+                  </fieldset> 
+                  <fieldset> 
+                    <legend>Card details</legend> 
+                    <fieldset> 
+                      <legend>Card type</legend> 
+                      <div class="card-type"> 
+                          <input id="visa" name="cardtype" type="radio"> 
+                          <label for="visa">VISA</label> 
+                          <input id="mastercard" name="cardtype" type="radio">
+                          <label for="mastercard">Mastercard</label> 
+                          <input id="amex" name="cardtype" type="radio"> 
+                          <label for="amex">AMEX</label>
+                      </div> 
+                    </fieldset>
+                    <div> 
+                        <label>Name
+                        <input name="cardName" type="text" placeholder="Name as it appears on your card" required>
+                        </label>  
+                    </div>
+                    <div> 
+                        <label>Card number 
+                        <input name="cardNo" type="number" required title="The sixteen digit number across the middle of your card."> 
+                        </label>
+                    </div>
+                    <div> 
+                        <label>Security code 
+                        <input name="security" type="number" required pattern="[0-9]{3}" title="The last three digits on the back of your card.">
+                        </label> 
+                    </div>
+                    <div> 
+                        <label>Expiry Date 
+                        <input name="expiry" type="month">
+                        </label>
+                    </div>
+                  </fieldset> 
+                  <fieldset> 
+                    <div> 
+                        <button type=submit>Place Order</button> 
+                    </div> 
+                  </fieldset> 
+                </form> 
+
+            <!-- FOOTER -->
+            <div class="footer-wrapper">
+                <footer class="footer">
+                    <div class="footer-left col-xs-12 col-md-4">
+                        footer left
+                    </div>
+                    <div class="footer-middle col-xs-12 col-md-4">
+                        footer middle
+                    </div>
+                    <div class="footer-tight col-xs-12 col-md-4">
+                        footer right
+                        <!--  Google GetDirections form  -->
+                        <form action="http://maps.google.com/maps" method="get" target="_blank">
+                            <label for="saddr">Enter your location</label>
+                            <input type="text" name="saddr" />
+                            <input type="hidden" name="daddr" value="350 5th Ave New York, NY 10018 (Empire State Building)" />
+                            <input type="submit" value="Get directions" />
+                        </form>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+<!-- \\\ END Content  -->
+
+        <!-- SCRIPTS- jQuery first -->
+        <!--  OLD  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>-->
+        <script
+              src="https://code.jquery.com/jquery-3.1.1.min.js"
+              integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+              crossorigin="anonymous">
+        </script>
+
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.1.1.min.js"><\/script>')
+        </script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+    
+        <!-- BOOTSTRAP JS  -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <!--<script src="js/vendor/bootstrap-3.3.7.min.js"></script>-->
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <!-- <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script> -->
+
+        <!--
+        
+        Also used this not-well-supported style: .btn{touch-action: none;}-->
+        
+        <script src='js/vendor/fastclick-1.0.6.min.js'></script>
+        
+    
+    </body>
+</html>
