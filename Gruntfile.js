@@ -1,11 +1,3 @@
-/* I am Gruntfile.js.   I live in the ROOT of the web project along with package.json  
-Tutorial: http://12devsofxmas.co.uk/2014/01/day-10-maintaining-a-better-workflow-with-grunt/
-
-
-grunt foo:testing:123   runs  foo task with arguments 'testing' and '123'
-a function in the foo task must handle those arguments... typcally with
-an IF statement.  SEE Register tasks section
-*/
 
 module.exports = function(grunt) {
 
@@ -276,22 +268,7 @@ module.exports = function(grunt) {
 			}
 		},
 			
-		push: {
-            doixstudio: {
-                options: {
-                    username: "admin@timestick.net",
-                    password: "Cami11i@s",
-                    host: "timestick.net",
-                    remoteBase: "joeuxdesigner/"
-                },
-                files: [{
-                    expand: true,
-                    cwd: 'dist/fonts',
-                    src: ['**/*']
-                    //exclude: ['.DS_Store','**/.DS_Store','.*', '**/.*']
-                }]
-            }
-	    },	  
+			  
             //need grunt-contrib-copy     **/*
     });
 
@@ -299,7 +276,7 @@ module.exports = function(grunt) {
 
 		
     //load a contrib task
-    /*  Use load-grunt-tasks instead of all these lines  */
+    /*  Use load-grunt-tasks instead of all these lines (it grabs the list from package.json) */
     require('load-grunt-tasks')(grunt);
 		/*
 		    grunt.loadNpmTasks('grunt-contrib-watch');
